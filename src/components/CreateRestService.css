@@ -1,0 +1,17 @@
+.modal-backdrop {
+    z-index: 1020;
+}
+.form-group  , .form-control{
+text-align: right;
+}
+
+
+.custom-file-label::after{
+    left: 0;
+    right:auto
+}
+
+
+.space{
+margin-bottom: 20px;
+margin-top: 20px;}
