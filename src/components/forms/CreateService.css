@@ -1,0 +1,13 @@
+/* .modal-backdrop {
+    z-index: 1020;
+} */
+.form-group  , .form-control{
+text-align: right;
+}
+
+.next-btn{
+    /* right: 4rem;  */
+/* 
+    /* position: absolute; */
+    /* margin-right: auto; */
+}

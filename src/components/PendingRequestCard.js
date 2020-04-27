@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 
-import "bootstrap/dist/css/bootstrap.min.css";
 // return <RestCard key={i} serviceNameHeb={serviceNameHeb} serviceNameEng={serviceNameEng} serviceUrl={serviceUrl} details={details} />
 
 export default class PendingRequestCard extends Component {

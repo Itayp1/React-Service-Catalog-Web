@@ -1,7 +1,6 @@
 import React from "react";
-import "bootstrap/dist/css/bootstrap.min.css";
-import { Link } from "react-router-dom";
-import CreateRestService from '../components/CreateRestService'
+import { NavLink } from "react-router-dom";
+
 const TopNavbar = () => {
   return (
     <nav
@@ -26,27 +25,14 @@ const TopNavbar = () => {
       <div className="collapse navbar-collapse" id="navbarNav">
         <ul className="navbar-nav ml-auto">
           <li className="nav-item">
-            <Link to="status" className="btn btn-light"
-
-            >
-              סטטוס הקמת שירות
-              </Link>
+            <NavLink to="/status" className="btn btn-light" >  סטטוס הקמת שירות</NavLink>
           </li>
           <li className="nav-item">
-            <CreateRestService />
 
-            <button
-              data-toggle="modal"
-              data-target="#CreateRestService"
-
-              className="btn btn-light">
-              REST חשיפת שירות
-            </button>
+            <NavLink to="/services/restservice/new" className="btn btn-light">חשיפת שירות REST</NavLink>
           </li>
           <li className="nav-item">
-            <button className="btn btn-light">
-              SOAP חשיפת שירות
-              </button>
+            <NavLink to="/services/soapservice/new" className="btn btn-light">חשיפת שירות SOAP</NavLink>
           </li>
         </ul>
       </div>

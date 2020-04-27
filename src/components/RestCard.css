@@ -1,0 +1,9 @@
+#cardCatalog{
+
+    box-shadow: 2px 5px 10px 0px rgba(0,0,0,0.2); 
+ margin: 10px;
+  width: 18rem;
+ text-align: center ;
+ /* border: radius 100; */
+
+}

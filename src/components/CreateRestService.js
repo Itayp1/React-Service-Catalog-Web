@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import "bootstrap/dist/css/bootstrap.min.css";
 import './CreateRestService.css'
 class CreateRestService extends Component {
     state = {

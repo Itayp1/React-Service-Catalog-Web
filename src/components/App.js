@@ -1,9 +1,12 @@
 import React from "react";
-import TopNavbar from "./TopNavbar";
-import CardList from "./CardList";
+import TopNavbar from "./navbar/TopNavbar";
+import CardList from "./ServicesList";
 import PendingRequestList from './PendingRequestList'
-import { BrowserRouter, Route } from 'react-router-dom'
-import "bootstrap/dist/css/bootstrap.min.css";
+import CreateRestService from './forms/CreateRestService'
+import CreateSoapService from './forms/CreateSoapService'
+import Main from './Main'
+
+import { BrowserRouter, Route, Redirect } from 'react-router-dom'
 
 
 class App extends React.Component {
@@ -11,12 +14,36 @@ class App extends React.Component {
         return (
             <>
                 <BrowserRouter>
-                    <div>
-                        <TopNavbar />
-                        <Route path="/" exact component={CardList} />
-                        <Route path="/status" exact component={PendingRequestList} />
 
-                    </div>
+                    <TopNavbar />
+
+
+
+
+                    {/* <div class="dropdown">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i className="fa fa-filter" /> Filter
+  </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <a class="dropdown-item" href=".">Action</a>
+                                <a class="dropdown-item" href=".">Another action</a>
+                                <a class="dropdown-item" href=".">Something else here</a>
+                            </div>
+                        </div> */}
+                    <main className="container-fluid">
+
+                        <Redirect from="/" exact to="/Main" />
+                        <Route path="/services" exact component={CardList} />
+                        <Route path="/Main" exact component={Main} />
+
+
+                        <Route path="/services" exact component={CardList} />
+                        <Route path="/status" exact component={PendingRequestList} />
+                        <Route path="/services/restservice/new" exact component={CreateRestService} />
+                        <Route path="/services/soapservice/new" exact component={CreateSoapService} />
+
+                    </main>
+
                 </BrowserRouter>
 
             </>

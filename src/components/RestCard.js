@@ -1,15 +1,12 @@
 import React, { Component } from "react";
 import RestCardDetails from "./RestCardDetails";
-
-import "bootstrap/dist/css/bootstrap.min.css";
-// return <RestCard key={i} serviceNameHeb={serviceNameHeb} serviceNameEng={serviceNameEng} serviceUrl={serviceUrl} details={details} />
+import "./RestCard.css"
 
 export default class RestCard extends Component {
   render() {
     return (
       <div
-        className="card"
-        style={{ margin: 10, width: "18rem", textAlign: "center" }}
+        className="card cardCatalog" id="cardCatalog"
       >
         <img src="rest.png" className="card-img-top" alt="rest" />
 

@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import "bootstrap/dist/css/bootstrap.min.css";
 
 class RestCardDetails extends Component {
   serviceName = this.props.serviceName;
@@ -69,8 +68,8 @@ class RestCardDetails extends Component {
                     style={{ width: "400px", marginTop: "2px" }}
                     defaultValue={this.url}
                     type="text"
-                    id="serviceUrl"
-                    // style={{ display: "none" }}
+                  // id="serviceUrl"
+                  // style={{ display: "none" }}
                   />
                 </div>
               </div>
