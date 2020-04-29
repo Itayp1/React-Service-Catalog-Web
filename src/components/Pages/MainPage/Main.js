@@ -18,7 +18,7 @@ export default class RestCard extends Component {
                 <p>dddddddddd</p>
                 <p>dddddddddd</p>
                 <p>dddddddddd</p>
-                <p>dddddddddd</p>
+                <p>ddddddddddd</p>
                 <p>dddddddddd</p>
                 <p>dddddddddd</p>
                 <p>dddddddddd</p>
