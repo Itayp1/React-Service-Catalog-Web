@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import './CreateService.css'
+import '../CreateService.css'
 class CreateRestService extends Component {
     state = {
         serviceNameEng: ""

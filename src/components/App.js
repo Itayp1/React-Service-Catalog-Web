@@ -2,10 +2,10 @@ import React from "react";
 import TopNavbar from "./navbar/TopNavbar";
 import CardList from "./Pages/ServicesListPage/ServicesListPage";
 import PendingRequestList from './Pages/PendingRequestListPage/PendingRequestListPage'
-import CreateRestService from './forms/CreateRestService'
-import CreateSoapService from './forms/CreateSoapService'
+import CreateRestService from './Pages/CreateServicePage/rest/CreateRestService'
+import CreateSoapService from './Pages/CreateServicePage/soap/CreateSoapService'
 import ProcessSteps from './Commons/processSteps/ProcessSteps'
-import Main from './Main'
+import Main from './Pages/MainPage/Main'
 
 import { BrowserRouter, Route, Redirect } from 'react-router-dom'
 

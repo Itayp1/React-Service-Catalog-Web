@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import RestCard from "../../RestCard";
+import RestCard from "./Components/RestCard";
 import axios from 'axios'
 import Pagination from '../../../utils/pagination'
 export class CardLsit extends Component {

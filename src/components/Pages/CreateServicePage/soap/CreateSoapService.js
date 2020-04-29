@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
-import './CreateService.css'
+import '../CreateService.css'
 import { Formik } from 'formik'
 // import axios from 'axios';
 import * as Yup from "yup"
-import TextInput from '../Commons/forms/TextInput'
-import InputTextArea from '../Commons/forms/InputTextArea'
-import FileUploadInput from '../Commons/forms/FileUploadInput'
+import TextInput from '../../../Commons/forms/TextInput'
+import InputTextArea from '../../../Commons/forms/InputTextArea'
+import FileUploadInput from '../../../Commons/forms/FileUploadInput'
 
 const validationSchema = Yup.object().shape({
     serviceNameHeb: Yup.string().max(3).required().label(" "),

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import PendingRequestCard from "../../PendingRequestCard";
+import PendingRequestCard from "./Components/PendingRequestCard";
 import axios from 'axios'
 export class PendingRequestList extends Component {
 
