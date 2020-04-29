@@ -1,9 +1,10 @@
 import React from "react";
 import TopNavbar from "./navbar/TopNavbar";
-import CardList from "./ServicesList";
-import PendingRequestList from './PendingRequestList'
+import CardList from "./Pages/ServicesListPage/ServicesListPage";
+import PendingRequestList from './Pages/PendingRequestListPage/PendingRequestListPage'
 import CreateRestService from './forms/CreateRestService'
 import CreateSoapService from './forms/CreateSoapService'
+import ProcessSteps from './Commons/processSteps/ProcessSteps'
 import Main from './Main'
 
 import { BrowserRouter, Route, Redirect } from 'react-router-dom'
@@ -32,12 +33,12 @@ class App extends React.Component {
                         </div> */}
                     <main className="container-fluid">
 
-                        <Redirect from="/" exact to="/Main" />
+                        <Redirect from="/" exact to="/ProcessSteps" />
                         <Route path="/services" exact component={CardList} />
                         <Route path="/Main" exact component={Main} />
+                        <Route path="/ProcessSteps" exact component={ProcessSteps} />
 
 
-                        <Route path="/services" exact component={CardList} />
                         <Route path="/status" exact component={PendingRequestList} />
                         <Route path="/services/restservice/new" exact component={CreateRestService} />
                         <Route path="/services/soapservice/new" exact component={CreateSoapService} />

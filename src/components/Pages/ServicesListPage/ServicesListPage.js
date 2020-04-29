@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import RestCard from "./RestCard";
+import RestCard from "../../RestCard";
 import axios from 'axios'
-import Pagination from './pagination'
+import Pagination from '../../../utils/pagination'
 export class CardLsit extends Component {
 
   state = { rest: [], pageNumber: 1, numOfPages: 1 }
@@ -30,7 +30,7 @@ export class CardLsit extends Component {
     return (
       // <div className="container-fluid" style={{ margin: "px 0px" }}>
       <>
-        <div className="row" style={{ backgroundImage: "url('https://images.unsplash.com/photo-1489844097929-c8d5b91c456e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjE3MzYxfQ&auto=format&fit=crop&w=1952&q=80')" }}>
+        <div className="row" >
           {this.servicesList()}
         </div>
         < Pagination pageNum={this.state.pageNumber} numOfPages={this.state.numOfPages} onChange={(pageNum) => {
