@@ -1,7 +1,7 @@
 import React from 'react'
 
 const TextInput = ({ name, touched, errors, handleChange, handleBlur, values, placeholder = "", title }) => {
-
+    console.log(values[name])
     return (
         <div className="mt-2">
             <label htmlFor={name}>{title}</label>

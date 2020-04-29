@@ -13,16 +13,16 @@ const validationSchema = Yup.object().shape({
     serviceUrl: Yup.string().max(20).required().label(" "),
     businessOwner: Yup.string().max(3).required().label(" "),
     techOwner: Yup.string().max(3).required().label(" "),
-    serviceDetails: Yup.string().max(3).required().label(" ")
+    serviceDetails: Yup.string().max(3).required().label(" "),
+    something: Yup.string().max(3).required().label(" "),
+    something2: Yup.string().max(3).required().label(" "),
+    something3: Yup.string().max(3).required().label(" ")
 
 })
 
-
-class CreateSoapService extends Component {
+class GeneralServiceform extends Component {
     constructor(props) {
         super(props);
-        this.handleSubmit = this.handleSubmit.bind(this);
-        this.fileInput = React.createRef();
         this.state = {
             serviceNameEng: "",
             selectedFile: null
@@ -33,25 +33,12 @@ class CreateSoapService extends Component {
         event.preventDefault();
         console.log('A name was submitted: ' + this.state.serviceNameEng);
     }
-    handleSubmit(event) {
-        console.log("event")
-    }
 
-    onChangeHandler = event => {
-        this.setState({
-            selectedFile: event.target.files[0],
-            loaded: 0,
-        })
-    }
-    onClickHandler = () => {
-        const data = new FormData()
-        data.append('file', this.state.selectedFile)
-    }
     render() {
-
+        const { propsValue } = this.props
         return (
             <div className="container">
-                <Formik initialValues={{ serviceNameHeb: "", serviceNameEng: "", serviceUrl: "", businessOwner: "", techOwner: "" }}
+                <Formik initialValues={{ serviceNameHeb: "", serviceNameEng: "", serviceUrl: "", businessOwner: "", techOwner: "", ...propsValue }}
                     validationSchema={validationSchema}
                 >
                     {(properites) => (
@@ -67,10 +54,10 @@ class CreateSoapService extends Component {
 
                                 <InputTextArea name="serviceDetails" title="תיאור השירות"  {...properites} />
                                 <FileUploadInput name="inputGroupFile01" title="במידה   וקיים יש להעלות את אפיון השירות" {...properites} />
-                                <FileUploadInput name="inputGroupFile01" title="WSDL לחץ כאן להוספת" {...properites} />
-                                <FileUploadInput name="inputGroupFile01" title="במידה ויש XSD לחץ כאן להוספת" {...properites} />
 
-
+                                {this.props.children && this.props.children.map((child, i) => {
+                                    return React.cloneElement(child, { ...properites, key: i })
+                                })}
 
 
                             </div>
@@ -85,4 +72,4 @@ class CreateSoapService extends Component {
         )
     }
 }
-export default CreateSoapService;
+export default GeneralServiceform;

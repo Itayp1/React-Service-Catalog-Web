@@ -34,6 +34,18 @@ const TopNavbar = () => {
           <li className="nav-item">
             <NavLink to="/services/soapservice/new" className="btn btn-light">חשיפת שירות SOAP</NavLink>
           </li>
+          <li className="nav-item">
+            <NavLink to="/services/soapservice/update" className="btn btn-light">עדכון שירות SOAP</NavLink>
+          </li>
+          <li className="nav-item">
+            <NavLink to="/services/restservice/update" className="btn btn-light">עדכון שירות REST</NavLink>
+          </li>
+          <li className="nav-item">
+            <NavLink to="/services/soapservice/confirm" className="btn btn-light">אישור שירות SOAP</NavLink>
+          </li>
+          <li className="nav-item">
+            <NavLink to="/services/restservice/confirm" className="btn btn-light">אישור שירות REST</NavLink>
+          </li>
         </ul>
       </div>
     </nav>
