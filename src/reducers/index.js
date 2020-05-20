@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux';
-import { reducer as formReducer } from 'redux-form';
-import authReducer from './authReducer';
-import streamReducer from './streamReducer';
+import pendingServicesReducer from './pendingServicesReducer';
+import servicesReducer from './servicesReducer';
+import selectedServiceReducer from './selectedServiceReducer';
 
 export default combineReducers({
-  auth: authReducer,
-  form: formReducer,
-  streams: streamReducer
+  pendingServices: pendingServicesReducer,
+  services: servicesReducer,
+  selectedService: selectedServiceReducer
 });

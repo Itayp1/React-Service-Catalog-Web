@@ -8,15 +8,15 @@ import InputTextArea from '../../../Commons/forms/InputTextArea'
 import FileUploadInput from '../../../Commons/forms/FileUploadInput'
 
 const validationSchema = Yup.object().shape({
-    serviceNameHeb: Yup.string().max(3).required().label(" "),
-    serviceNameEng: Yup.string().max(3).required().label(" "),
-    serviceUrl: Yup.string().max(20).required().label(" "),
-    businessOwner: Yup.string().max(3).required().label(" "),
-    techOwner: Yup.string().max(3).required().label(" "),
-    serviceDetails: Yup.string().max(3).required().label(" "),
-    something: Yup.string().max(3).required().label(" "),
-    something2: Yup.string().max(3).required().label(" "),
-    something3: Yup.string().max(3).required().label(" ")
+    serviceNameHeb: Yup.string().max(30).required().label(" "),
+    serviceNameEng: Yup.string().max(30).required().label(" "),
+    backendUrl: Yup.string().max(30).required().label(" "),
+    businessOwner: Yup.string().max(30).required().label(" "),
+    techOwner: Yup.string().max(30).required().label(" "),
+    serviceDetails: Yup.string().max(30).required().label(" "),
+    // wsdlFile: Yup.string().max(3).required().label(" "),
+    // xsdFiles: Yup.string().max(3).required().label(" "),
+    // swaggerFile: Yup.string().max(3).required().label(" ")
 
 })
 
@@ -26,42 +26,47 @@ class GeneralServiceform extends Component {
         this.state = {
             serviceNameEng: "",
             selectedFile: null
-
         }
     }
     onFormSubmit = (event) => {
         event.preventDefault();
-        console.log('A name was submitted: ' + this.state.serviceNameEng);
+    }
+
+    renderChildren = (properites) => {
+        return Array.isArray(this.props.children) ? this.props.children.map((child, i) => {
+            return React.cloneElement(child, { ...properites, key: i })
+        }) : React.cloneElement(this.props.children, { ...properites })
     }
 
     render() {
-        const { propsValue } = this.props
+
+        const { onFormSubmit, propsValue, disableEdit = false } = this.props
+
         return (
             <div className="container">
-                <Formik initialValues={{ serviceNameHeb: "", serviceNameEng: "", serviceUrl: "", businessOwner: "", techOwner: "", ...propsValue }}
-                    validationSchema={validationSchema}
+                <Formik enableReinitialize initialValues={{ serviceNameHeb: "", serviceNameEng: "", backendUrl: "", businessOwner: "", techOwner: "", serviceDetails: "", ...propsValue }}
+                    validationSchema={validationSchema} onSubmit={onFormSubmit}
                 >
-                    {(properites) => (
-                        <form onSubmit={this.onFormSubmit}>
+                    {({ handleSubmit, ...properites }) => (
+                        <form onSubmit={handleSubmit}>
 
+                            {properites.disableEdit = disableEdit}
                             <div className="form-group">
 
                                 <TextInput name="serviceNameHeb" title="שם השירות בעברית" placeholder="הכנס את שם השירות בעברית "  {...properites} />
                                 <TextInput name="serviceNameEng" title="שם השירות באנגלית" placeholder="הכנס את שם השירות באנגלית "  {...properites} />
-                                <TextInput name="serviceUrl" title="כתובת השירות" placeholder="https://icp-int.menora.co.il הכנס את כתובת השירות לדוגמה"  {...properites} />
+                                <TextInput name="backendUrl" title="כתובת השירות" placeholder="https://icp-int.menora.co.il הכנס את כתובת השירות לדוגמה"  {...properites} />
                                 <TextInput name="businessOwner" title="מנהל עסקי" placeholder="שם המנהל העסקי של השירות"  {...properites} />
                                 <TextInput name="techOwner" title="מנהל טכני" placeholder="שם המנהל הטכני של השירות"  {...properites} />
-
                                 <InputTextArea name="serviceDetails" title="תיאור השירות"  {...properites} />
-                                <FileUploadInput name="inputGroupFile01" title="במידה   וקיים יש להעלות את אפיון השירות" {...properites} />
+                                {!disableEdit && <FileUploadInput name="serviceDetailsFile" title="במידה   וקיים יש להעלות את אפיון השירות" {...properites} />}
 
-                                {this.props.children && this.props.children.map((child, i) => {
-                                    return React.cloneElement(child, { ...properites, key: i })
-                                })}
+                                {this.props.children ? this.renderChildren(properites) : null}
 
 
                             </div>
-                            <button type="button" disabled={!properites.dirty || Object.keys(properites.errors).length} className="btn  btn-primary float-right">המשך</button>
+
+                            {!disableEdit && <button type="submit" disabled={Object.keys(properites.errors).length || properites.values.serviceNameHeb === ""} className="btn  btn-primary float-right">המשך</button>}
 
 
                         </form>

@@ -1,49 +1,60 @@
 import React, { Component } from "react";
-import RestCard from "./Components/RestCard";
-import axios from 'axios'
+import ServiceCard from "./Components/ServiceCard";
 import Pagination from '../../../utils/pagination'
-export class CardLsit extends Component {
+import { connect } from 'react-redux';
+import { fetchServices } from '../../../actions';
 
-  state = { rest: [], pageNumber: 1, numOfPages: 1 }
+class ServicesListPage extends Component {
+
+  state = { pageNumber: 1, }
   async  componentDidMount() {
-    const response = await axios.get("http://localhost:3000/api/services/")
+    this.props.fetchServices();
 
-    const numOfPages = Math.ceil(response.data.Rest.length / 12)
-    this.setState({ rest: response.data.Rest, numOfPages })
+
 
   }
 
   servicesList = () => {
-    const listOfServices = this.state.rest.map(({ serviceNameHeb, serviceNameEng, serviceUrl, details }, i) => {
-      return <RestCard key={i} serviceNameHeb={serviceNameHeb} serviceNameEng={serviceNameEng} serviceUrl={serviceUrl} details={details} />
+    const listOfServices = this.props.rest.map((properties, i) => {
+      return <ServiceCard key={i} {...properties} />
     })
     const listOfServicesFilterd = listOfServices.filter((x, i) => {
 
-      if (i + 1 <= (this.state.pageNumber * 12) && i + 1 >= (this.state.pageNumber * 12 - 12 + 1)) {
+      if (i + 1 <= (this.state.pageNumber * 10) && i + 1 >= (this.state.pageNumber * 10 - 10 + 1)) {
         return true
       }
       return false
     })
     return <>{listOfServicesFilterd}</>
   }
+
+
   render() {
     return (
-      // <div className="container-fluid" style={{ margin: "px 0px" }}>
       <>
         <div className="row" >
           {this.servicesList()}
         </div>
-        < Pagination pageNum={this.state.pageNumber} numOfPages={this.state.numOfPages} onChange={(pageNum) => {
-          console.log("ssssss")
-          this.setState({ pageNumber: pageNum })
-        }} />
+        < Pagination pageNum={this.state.pageNumber} numOfPages={this.props.numOfPages} onChange={(pageNum) => { this.setState({ pageNumber: pageNum }) }} />
       </>
-      // </div>
+
     );
   }
 }
 
-export default CardLsit;
+const mapStateToProps = (props, ownProps) => {
+  const { services } = props
+
+  const numOfPages = Math.ceil(services.length / 12)
+  const rest = services
+
+
+  return { numOfPages, rest }
+};
+
+export default connect(mapStateToProps, { fetchServices })(ServicesListPage)
+
+
 
 /*
 import _ from "lodash";

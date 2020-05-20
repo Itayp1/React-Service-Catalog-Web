@@ -1,14 +1,17 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import "./TopNavbar.css"
-const TopNavbar = () => {
+const TopNavbar = ({ history }) => {
   return (
     <nav
       className="navbar navbar-expand-lg   navbar-light bg-light fixed-top " // transparent"
       style={{ marginBottom: "100px" }}
     >
-
-      <a className="navbar-brand" href="/">
+      {/* <NavLink to="/services" className="btn btn-light" >  Service Catalog</NavLink> */}
+      <a className="navbar-brand" href="/service" onClick={(event) => {
+        event.preventDefault();
+        history.push("/services");
+      }}>
         Service Catalog
       </a>
       <button
@@ -24,8 +27,13 @@ const TopNavbar = () => {
       </button>
       <div className="collapse navbar-collapse" id="navbarNav">
         <ul className="navbar-nav ml-auto">
+
           <li className="nav-item">
-            <NavLink to="/status" className="btn btn-light" >  סטטוס הקמת שירות</NavLink>
+            <NavLink to="/services" className="btn btn-light" activeClassName="ss" >  שירותים</NavLink>
+          </li>
+
+          <li className="nav-item">
+            <NavLink to="/services/pendingapproval" className="btn btn-light" >  סטטוס הקמת שירות</NavLink>
           </li>
           <li className="nav-item">
 
@@ -34,7 +42,7 @@ const TopNavbar = () => {
           <li className="nav-item">
             <NavLink to="/services/soapservice/new" className="btn btn-light">חשיפת שירות SOAP</NavLink>
           </li>
-          <li className="nav-item">
+          {/* <li className="nav-item">
             <NavLink to="/services/soapservice/update" className="btn btn-light">עדכון שירות SOAP</NavLink>
           </li>
           <li className="nav-item">
@@ -45,7 +53,7 @@ const TopNavbar = () => {
           </li>
           <li className="nav-item">
             <NavLink to="/services/restservice/confirm" className="btn btn-light">אישור שירות REST</NavLink>
-          </li>
+          </li> */}
         </ul>
       </div>
     </nav>

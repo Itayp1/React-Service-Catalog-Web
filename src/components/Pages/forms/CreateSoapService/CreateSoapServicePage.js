@@ -1,19 +1,32 @@
 import React, { PureComponent } from 'react'
-import GeneralServiceform from '../components/GeneralServiceform'
-
+import SoapServiceForm from '../components/SoapServiceForm'
+import { connect } from 'react-redux';
+import { addSoapServiceOnSubmit } from '../../../../actions';
 
 export class CreateSoapServicePage extends PureComponent {
+
+    routeToServiceUri = (props) => {
+
+
+
+
+
+        this.props.history.push("/services/pendingapproval")
+        this.props.addSoapServiceOnSubmit(props)
+    }
     render() {
         return (
             <div>
                 <h1 className="text-center">יצירת שירות SOAP </h1>
-                < GeneralServiceform propsValue={{ something: "", something2: "", something3: "" }}>
-
-                </GeneralServiceform>
+                < SoapServiceForm onFormSubmit={this.routeToServiceUri} />
 
             </div>
         )
     }
 }
+export default connect(null, { addSoapServiceOnSubmit })(CreateSoapServicePage)
 
-export default CreateSoapServicePage
+
+
+
+

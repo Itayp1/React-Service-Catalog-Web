@@ -1,7 +1,7 @@
 import React from 'react'
 
 
-const InputTextArea = ({ name, touched, errors, handleChange, handleBlur, values, placeholder = "", title }) => {
+const InputTextArea = ({ name, touched, errors, handleChange, handleBlur, values, placeholder = "", title, disableEdit }) => {
 
     return (
         <div className="mt-2">
@@ -11,6 +11,8 @@ const InputTextArea = ({ name, touched, errors, handleChange, handleBlur, values
                     onChange={handleChange}
                     onBlur={handleBlur}
                     value={values[name]}
+                    disabled={disableEdit}
+
                 />
 
                 <span className="input-group-text">{title}</span>
