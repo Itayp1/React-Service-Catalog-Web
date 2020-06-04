@@ -16,7 +16,7 @@ const stepList = (ListodSteps, stepStatus) => {
 
 const processSteps = ({ status, stepStatus }) => {
 
-
+    // console.log(ProcesStepLists[status])
     return (
         <div className="container">
             <div className="mt-5 mb-5 text-center">

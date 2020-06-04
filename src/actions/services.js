@@ -50,6 +50,14 @@ export const fetchPendingServiceStatus = (type, serviceNameEng) => async dispatc
 
     dispatch({ type: SELECTED_SERVICE, payload: response.data })
 }
+
+export const fetchRestService = serviceNameEng => async dispatch => {
+    const response = await api.get(`/api/services/rest/${serviceNameEng}`)
+
+
+
+    dispatch({ type: SELECTED_SERVICE, payload: response.data })
+}
 // export const AddRestServiceOnSubmit =serviceDetails =>  async dispatch =>{
 
 //     // const response = api.get()

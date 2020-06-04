@@ -26,15 +26,17 @@ export class ServiceStatusPage extends Component {
         const { selectedService } = this.props
         const { status: stepStatus } = selectedService
 
-        console.log(selectedService)
-        // selectedService.disableForm = true
-
+        if (!selectedService) {
+            // console.log("not exist ")
+        }
         return (
             <div>
+
                 <h1 className="text-center"> סטטוס השירות </h1>
                 <StepProcess status={status} stepStatus={stepStatus} />
                 <h1 className="text-center"> {this.state.title} </h1>
-                < GeneralServiceform propsValue={{ ...selectedService }} disableEdit={true} />
+                < GeneralServiceform propsValue={{ ...selectedService }} disableEdit={true} /> */}
+
 
 
 

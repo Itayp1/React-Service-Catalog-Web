@@ -9,7 +9,7 @@ const image = { soap, rest }
 
 export default class PendingRequestCard extends Component {
     render() {
-        const { serviceNameEng, serviceNameHeb, type } = this.props
+        const { serviceNameEng, serviceNameHeb, type, status } = this.props
         return (
             <div
                 className="card"
@@ -21,7 +21,7 @@ export default class PendingRequestCard extends Component {
                     <h5 className="card-title">{serviceNameEng}</h5>
                     <p className="card-text">{serviceNameHeb}</p>
                     <NavLink
-                        to={`/services/status/${type}/${serviceNameEng}`}
+                        to={`/services/getstatus/${status}/${type}/${serviceNameEng}`}
                         data-target="#staticBackdrop"
                         className="btn btn-primary" >
 

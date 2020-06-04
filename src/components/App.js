@@ -9,6 +9,8 @@ import UpdateRestServicePage from './Pages/forms/updateRestService/UpdateRestSer
 import ConfirmationRestServicePage from './Pages/forms/confirmationRestService/ConfirmationRestServicePage'
 import ConfirmationSoapServicePage from './Pages/forms/confirmationSoapService/ConfirmationSoapServicePage'
 import ServiceStatusPage from './Pages/ServiceStatusPage/ServiceStatusPage'
+import RestServicePage from "./Pages/RestServicePage/RestServicePage";
+import MultiPart from "./Commons/forms/Multipart";
 
 import StepProcess from './Commons/processSteps/StepProcess'
 
@@ -39,10 +41,10 @@ class App extends React.Component {
                     <main className="container-fluid">
 
                         {/* <Redirect from="/" exact to="/services/pendingapproval" /> */}
-                        <Route path="/services" exact component={CardList} />
-                        <Route path="/services/:status/:type/:serviceNameEng" exact component={ServiceStatusPage} />
+                        <Route path="/services/getstatus/:status/:type/:serviceNameEng" exact component={ServiceStatusPage} />
 
-
+                        <Route path="/multi" exact component={MultiPart} />
+                        <Route path="/services/rest/:serviceNameEng" exact component={RestServicePage} />
                         <Route path="/services/pendingapproval" exact component={PendingApprovalListPage} />
                         <Route path="/services/restservice/new" exact component={CreateRestService} />
                         <Route path="/services/soapservice/new" exact component={CreateSoapService} />
@@ -50,6 +52,7 @@ class App extends React.Component {
                         <Route path="/services/soapservice/update" exact component={UpdateSoapServicePage} />
                         <Route path="/services/restservice/confirm/:id" exact component={ConfirmationRestServicePage} />
                         <Route path="/services/soapservice/confirm/:id" exact component={ConfirmationSoapServicePage} />
+                        <Route path="/services" exact component={CardList} />
                     </main>
 
                 </BrowserRouter>

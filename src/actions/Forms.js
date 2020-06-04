@@ -4,6 +4,7 @@ import {
 import api from '../apis/catalogApi'
 
     ;
+import { fetchServices } from './services';
 
 
 export const addSoapServiceOnSubmit = serviceDetails => async dispatch => {
@@ -15,8 +16,11 @@ export const addSoapServiceOnSubmit = serviceDetails => async dispatch => {
 }
 
 export const addRestServiceOnSubmit = serviceDetails => async dispatch => {
-
-    const response = await api.post("/api/createservice/rest", serviceDetails)
+    console.log(serviceDetails)
+    const fd = new FormData();
+    fd.append("swaggerFile", serviceDetails.swaggerFile, "swaggerFile")
+    fd.append("json", JSON.stringify(serviceDetails))
+    const response = await api.post("/api/createservice/rest", fd)
     dispatch({ type: ADDED_SERVICE, payload: response.data });
 
 

@@ -39,7 +39,6 @@ class GeneralServiceform extends Component {
     }
 
     render() {
-
         const { onFormSubmit, propsValue, disableEdit = false } = this.props
 
         return (
@@ -48,7 +47,7 @@ class GeneralServiceform extends Component {
                     validationSchema={validationSchema} onSubmit={onFormSubmit}
                 >
                     {({ handleSubmit, ...properites }) => (
-                        <form onSubmit={handleSubmit}>
+                        <form onSubmit={handleSubmit} enctype="multipart/form-data" >
 
                             {properites.disableEdit = disableEdit}
                             <div className="form-group">
@@ -59,7 +58,7 @@ class GeneralServiceform extends Component {
                                 <TextInput name="businessOwner" title="מנהל עסקי" placeholder="שם המנהל העסקי של השירות"  {...properites} />
                                 <TextInput name="techOwner" title="מנהל טכני" placeholder="שם המנהל הטכני של השירות"  {...properites} />
                                 <InputTextArea name="serviceDetails" title="תיאור השירות"  {...properites} />
-                                {!disableEdit && <FileUploadInput name="serviceDetailsFile" title="במידה   וקיים יש להעלות את אפיון השירות" {...properites} />}
+                                {/* {!disableEdit && <FileUploadInput name="serviceDetailsFile" title="במידה   וקיים יש להעלות את אפיון השירות" {...properites} />} */}
 
                                 {this.props.children ? this.renderChildren(properites) : null}
 

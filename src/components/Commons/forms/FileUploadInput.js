@@ -1,6 +1,6 @@
 import React from 'react'
 
-const FileUploadInput = ({ name, touched, errors, handleChange, handleBlur, values, placeholder = "", title }) => {
+const FileUploadInput = ({ name, touched, errors, handleChange, handleBlur, values, placeholder = "", title, setFieldValue }) => {
 
     return (
         <div className="mt-4">
@@ -11,11 +11,15 @@ const FileUploadInput = ({ name, touched, errors, handleChange, handleBlur, valu
                     htmlFor={name}>{title}</label>
                 <input
                     type="file"
-                    id="inputGroupFile01"
+                    name={name}
+                    id={name}
                     placeholder={placeholder}
-                    onChange={handleChange}
+                    // onChange={handleChange}
                     onBlur={handleBlur}
-                    value={values[name]}
+                    // value={values[name]}
+                    onChange={(event) => {
+                        setFieldValue(name || "file", event.currentTarget.files[0], event.currentTarget.files[0].name);
+                    }}
                 />
 
             </div>
@@ -24,6 +28,12 @@ const FileUploadInput = ({ name, touched, errors, handleChange, handleBlur, valu
     )
 
 }
+
+
+
+
+
+
 
 
 
