@@ -11,7 +11,7 @@ import ConfirmationSoapServicePage from './Pages/forms/confirmationSoapService/C
 import ServiceStatusPage from './Pages/ServiceStatusPage/ServiceStatusPage'
 import RestServicePage from "./Pages/RestServicePage/RestServicePage";
 import MultiPart from "./Commons/forms/Multipart";
-
+import NotFound from "./Pages/NotFound/NotFound"
 import StepProcess from './Commons/processSteps/StepProcess'
 
 import { BrowserRouter, Route, Redirect, withRouter } from 'react-router-dom'
@@ -53,6 +53,9 @@ class App extends React.Component {
                         <Route path="/services/restservice/confirm/:id" exact component={ConfirmationRestServicePage} />
                         <Route path="/services/soapservice/confirm/:id" exact component={ConfirmationSoapServicePage} />
                         <Route path="/services" exact component={CardList} />
+                        <Route path="/" component={NotFound} />
+
+
                     </main>
 
                 </BrowserRouter>

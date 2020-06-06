@@ -26,8 +26,8 @@ export class RestServicePage extends Component {
 
         return (
             <div>
-
-                <h1 className="text-center"> {selectedService.serviceNameHeb} </h1>
+                {console.log(selectedService)}
+                <h1 className="text-center"> {selectedService && selectedService.serviceNameHeb} </h1>
                 < GeneralServiceform propsValue={{ ...selectedService }} disableEdit={true} />
                 <a href={`http://localhost:3000/api/api-docs/${serviceNameEng}`} target="_blank">Swagger</a>
 
