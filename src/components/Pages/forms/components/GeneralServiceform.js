@@ -47,7 +47,7 @@ class GeneralServiceform extends Component {
                     validationSchema={validationSchema} onSubmit={onFormSubmit}
                 >
                     {({ handleSubmit, ...properites }) => (
-                        <form onSubmit={handleSubmit} enctype="multipart/form-data" >
+                        <form onSubmit={handleSubmit} encType="multipart/form-data" >
 
                             {properites.disableEdit = disableEdit}
                             <div className="form-group">

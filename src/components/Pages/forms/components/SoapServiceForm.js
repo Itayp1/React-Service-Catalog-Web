@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react'
 import GeneralServiceform from '../components/GeneralServiceform'
 import FileUploadInput from '../../../Commons/forms/FileUploadInput'
+import MultiFileUploadInput from '../../../Commons/forms/MultiFileUploadInput'
 
 export class SoapServiceForm extends PureComponent {
 
@@ -10,7 +11,7 @@ export class SoapServiceForm extends PureComponent {
             <div>
                 < GeneralServiceform propsValue={{ wsdlFile: "", xsdFiles: "", ...selectedService }} onFormSubmit={this.props.onFormSubmit} >
                     <FileUploadInput name="wsdlFile" title="wsdlFile" placeholder="wsdlFile" />
-                    <FileUploadInput name="xsdFiles" title="xsdFiles" placeholder="xsdFiles" />
+                    <MultiFileUploadInput name="xsdFiles" title="xsdFiles" placeholder="xsdFiles" />
                 </GeneralServiceform>
             </div>
         )
