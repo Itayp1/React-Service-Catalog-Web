@@ -23,7 +23,8 @@ export default class pagination extends Component {
     }
 
     decpagenumber = () => {
-        if (this.props.pageNum >= this.props.numOfPages) {
+        if (this.props.pageNum > 1) {
+
             this.props.onChange(this.props.pageNum - 1)
         }
     }
