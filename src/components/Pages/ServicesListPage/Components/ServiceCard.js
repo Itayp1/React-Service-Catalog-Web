@@ -2,12 +2,16 @@ import React, { Component } from "react";
 
 import soap from '../../../../images/soap.png'
 import rest from '../../../../images/rest.png'
+import { NavLink } from "react-router-dom";
 
 const image = { soap, rest }
 // return <RestCard key={i} serviceNameHeb={serviceNameHeb} serviceNameEng={serviceNameEng} serviceUrl={serviceUrl} details={details} />
 
 export default class ServiceCard extends Component {
+
   render() {
+    const { serviceNameEng, type } = this.props
+
     return (
       <div
         className="card"
@@ -18,14 +22,13 @@ export default class ServiceCard extends Component {
         <div className="card-body">
           <h5 className="card-title">{this.props.serviceNameEng}</h5>
           <p className="card-text">{this.props.serviceNameHeb}</p>
-          <button
-            type="button"
-            className="btn btn-primary"
-            data-toggle="modal"
+
+          <NavLink
+            to={`/services/${type}/${serviceNameEng}`}
             data-target="#staticBackdrop"
-          >
-            סטטוס הבקשה
-          </button>
+            className="btn btn-primary" >
+
+            סטטוס הבקשה</NavLink>
         </div>
       </div>
     );

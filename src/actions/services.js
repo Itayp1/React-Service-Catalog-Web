@@ -58,6 +58,27 @@ export const fetchRestService = serviceNameEng => async dispatch => {
 
     dispatch({ type: SELECTED_SERVICE, payload: response.data })
 }
+
+export const fetchSoapService = serviceNameEng => async dispatch => {
+    let response
+    try {
+        console.log("in try")
+
+        response = await api.get(`/api/services/soap/${serviceNameEng}`)
+
+    } catch (error) {
+        if (error.response.status === 404) {
+            response = {}
+            response.data = { status: "notFound" }
+        }
+
+    }
+
+
+
+    dispatch({ type: SELECTED_SERVICE, payload: response.data })
+}
+
 // export const AddRestServiceOnSubmit =serviceDetails =>  async dispatch =>{
 
 //     // const response = api.get()
