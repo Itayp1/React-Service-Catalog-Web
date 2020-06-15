@@ -1,3 +1,3 @@
 module.exports = {
-    BaseUrl: "http://localhost:3000"
+    BaseUrl: process.env.BASEURL || "http://localhost:3000"
 }

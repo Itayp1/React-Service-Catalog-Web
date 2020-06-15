@@ -1,8 +1,10 @@
 import React, { Component } from 'react'
 import GeneralServiceform from '../forms/components/GeneralServiceform'
-
+import swagger from '../../../images/swagger.png'
+import "./RestService.css"
 import { connect } from 'react-redux';
 import { fetchRestService } from '../../../actions';
+import { BaseUrl } from '../../../config'
 
 export class RestServicePage extends Component {
 
@@ -25,14 +27,23 @@ export class RestServicePage extends Component {
 
 
         return (
-            <div>
-                {console.log(selectedService)}
+            <div className="container">
+
                 <h1 className="text-center"> {selectedService && selectedService.serviceNameHeb} </h1>
                 < GeneralServiceform propsValue={{ ...selectedService }} disableEdit={true} />
-                <a href={`http://localhost:3000/api/api-docs/${serviceNameEng}`} target="_blank">Swagger</a>
+
+                <div style={{ textAlign: "center" }}>
+
+                    <a href={`${BaseUrl}/api/api-docs/${serviceNameEng}`} target="_blank">
+                        <img src={swagger} title="swagger" className="img-fluid rounded restService" alt="swagger" />
+                    </a>
 
 
+                    <a href={`${BaseUrl}/api/services/getFile/${serviceNameEng}.docx`} target="_blank">
+                        <button type="button" class="btn btn-primary btn-lg restService">אפיון השירות</button>
 
+                    </a>
+                </div>
             </div>
         )
     }

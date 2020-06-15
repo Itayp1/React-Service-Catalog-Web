@@ -28,7 +28,7 @@ export default class ServiceCard extends Component {
             data-target="#staticBackdrop"
             className="btn btn-primary" >
 
-            סטטוס הבקשה</NavLink>
+            פרטים נוספים</NavLink>
         </div>
       </div>
     );
